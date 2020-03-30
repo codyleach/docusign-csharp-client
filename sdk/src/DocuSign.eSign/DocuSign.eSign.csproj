@@ -35,6 +35,7 @@ Contact: devcenter@docusign.com
     <RepositoryUrl>https://github.com/docusign/docusign-csharp-client</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes></PackageReleaseNotes>
+    <Version>4.2.0</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,7 +60,7 @@ Contact: devcenter@docusign.com
     <DefineConstants>NET452</DefineConstants>
   </PropertyGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net452'">
-    <PackageReference Include="BouncyCastle" Version="1.8.1" />
+    <PackageReference Include="BouncyCastle" Version="1.8.5" />
   </ItemGroup>
 
   <!-- .NET Standard 2.0 compilation flags and build options -->
@@ -71,12 +72,13 @@ Contact: devcenter@docusign.com
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="RestSharp" Version="106.3.1" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
-    <PackageReference Include="Microsoft.IdentityModel.Protocols" Version="5.4.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.6.7" />
+    <PackageReference Include="RestSharp" Version="106.10.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols" Version="6.5.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.0" />
   </ItemGroup>
 
 </Project>
