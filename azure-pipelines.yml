@@ -18,10 +18,11 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+  workingDirectory: '$(Build.SourcesDirectory)/sdk/src/DocuSign.eSign.Core/'
 - task: NuGetCommand@2
   inputs:
     command: pack
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '$(Build.SourcesDirectory)/sdk/src/DocuSign.eSign.Core/*.csproj'
     versioningScheme: byPrereleaseNumber
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
