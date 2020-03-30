@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   buildConfiguration: 'Release'
@@ -16,22 +16,8 @@ variables:
   Patch: '0'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- script: dotnet pack --configuration $(buildConfiguration) -p:PackageVersion=$(Major).$(Minor).$(Patch)
+  displayName: 'dotnet pack $(buildConfiguration)'
   workingDirectory: '$(Build.SourcesDirectory)/sdk/src/DocuSign.eSign.Core/'
-- task: NuGetCommand@2
-  inputs:
-    command: pack
-    packagesToPack: '$(Build.SourcesDirectory)/sdk/src/DocuSign.eSign.Core/*.csproj'
-    versioningScheme: byPrereleaseNumber
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'
-- task: NuGetAuthenticate@0
-  displayName: 'NuGet Authenticate'
-- task: NuGetCommand@2
-  displayName: 'NuGet push'
-  inputs:
-    command: push
-    publishVstsFeed: 'BreezePackages'
-    allowPackageConflicts: true
+- script: dotnet nuget push --source "BreezePackages" --api-key az '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+  displayName: 'dotnet nuget push'
