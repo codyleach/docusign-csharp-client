@@ -31,4 +31,4 @@ steps:
     nuGetFeedType: 'internal'
     publishVstsFeed: 'BreezePackages'
     allowPackageConflicts: true
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    packagesToPush: '$(Build.SourcesDirectory)/**/*.nupkg;!$(Build.SourcesDirectory)/**/*.symbols.nupkg'
