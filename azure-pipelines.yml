@@ -16,14 +16,14 @@ variables:
   Patch: '0'
 
 steps:
-- task: NuGetAuthenticate@0
-  displayName: 'NuGet Authenticate'
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: '$(Build.SourcesDirectory)/sdk/src/DocuSign.eSign.Core/'
 - script: dotnet pack --configuration $(buildConfiguration) -p:PackageVersion=$(Major).$(Minor).$(Patch)
   displayName: 'dotnet pack $(buildConfiguration)'
   workingDirectory: '$(Build.SourcesDirectory)/sdk/src/DocuSign.eSign.Core/'
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
 - task: NuGetCommand@2
   displayName: 'NuGet push'
   inputs:
@@ -31,7 +31,7 @@ steps:
     feedsToUse: 'select'
     packagesToPush: '$(Build.SourcesDirectory)/**/*.nupkg;!$(Build.SourcesDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'BreezePackages'
+    publishVstsFeed: 'LeverageRx/BreezePackages'
     allowPackageConflicts: true
     versioningScheme: byPrereleaseNumber
     majorVersion: '$(Major)'
