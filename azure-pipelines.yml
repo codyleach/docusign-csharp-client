@@ -28,7 +28,12 @@ steps:
   displayName: 'NuGet push'
   inputs:
     command: push
+    feedsToUse: 'select'
+    packagesToPush: '$(Build.SourcesDirectory)/**/*.nupkg;!$(Build.SourcesDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'BreezePackages'
     allowPackageConflicts: true
-    packagesToPush: '$(Build.SourcesDirectory)/**/*.nupkg;!$(Build.SourcesDirectory)/**/*.symbols.nupkg'
+    versioningScheme: byPrereleaseNumber
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'
